@@ -10,6 +10,11 @@ import java.util.Properties;
 public class TestBase {
 	
 	public Properties proper;
+	public int Response_Status_code_200 = 200;
+	public int Response_Status_code_500 = 500;
+	public int Response_Status_code_400 = 400;
+	public int Response_Status_code_401 = 401;
+	public int Response_Status_code_201 = 201;
 	
 	public TestBase() {
 		try {

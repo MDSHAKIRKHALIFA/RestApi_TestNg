@@ -1,6 +1,8 @@
 package com.qa.client;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -14,31 +16,25 @@ public class RestClient {
 	
 	//Shakir
 	
-	//1.Get Mathod
+	//1.Get Method without header
 	
-	public void get(String url) throws ClientProtocolException, IOException {
+	public CloseableHttpResponse get(String url) throws ClientProtocolException, IOException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet(url); //http get requerest
 		CloseableHttpResponse closeablehttpresponse = httpClient.execute(httpget); //hit the get url
-		
-		//Get status code:
-		int statusCode = closeablehttpresponse.getStatusLine().getStatusCode();
-		System.out.println("The status code is ---->"+statusCode);
-		
-		String responseString = EntityUtils.toString(closeablehttpresponse.getEntity(), "UTF-8");
-		
-		//get json string:
-		JSONObject responseJson = new JSONObject(responseString);
-		System.out.println("responseJson from api --->"+responseJson);
-		
-		//get All headers Array
-		Header[] headerArray =  closeablehttpresponse.getAllHeaders();
-		HashMap<String, String> allHeaders = new HashMap<String, String>();
-		
-		for(Header header: headerArray) {
-		allHeaders.put(header.getName(), header.getValue());
-		
-		System.out.println("Headers array---->"+allHeaders);
+		return closeablehttpresponse;
 	}
+	
+	//Get method with header
+	//below method is Overloaded with two parameters 
+	public CloseableHttpResponse get(String url, HashMap<String, String> headerMap) throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpGet httpget = new HttpGet(url); //http get requerest
+		for(Map.Entry<String, String> entry: headerMap.entrySet()) {
+			httpget.addHeader(entry.getKey(), entry.getValue());
+		}
+		CloseableHttpResponse closeablehttpresponse = httpClient.execute(httpget); //hit the get url
+		return closeablehttpresponse;
 	}
+	
 }
