@@ -1,0 +1,19 @@
+//get
++ REST API concepts and examples:
+• Add Http Client JSON Parser libs dependency
+• Automate GET APIs without Headers
+• How to call Http GET API using HTTP Client
+• How to fecth Response Status Code, JSON Object and Response Headers
+• HTTP Get and Post request in Java
+
+//Post:
++How to convert Java Object (POJO) to JSON Object (Marshelling)
++How to convert JSON Object to Java Object (POJO) (Un-Marshelling)
++ObjectMapper in Jackson API
+
++ REST API concepts and examples:
+• Add Http Client JSON Parser libs dependency
+• Automate POST APIs with Headers
+• How to call Http POST API using HTTP Client
+• How to fecth Response Status Code, JSON Object and Response Headers
+• HTTP Post request in Java
